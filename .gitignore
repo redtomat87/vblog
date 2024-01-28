@@ -1,6 +1,7 @@
 # IDEs
 .idea/
 
+/home/vk/PycharmProjects/OTUS/homework_03/.venv/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
