@@ -1,3 +1,4 @@
+# docker run -it -p <prefered port>:8000 web
 FROM python:3.10.12-buster
 
 WORKDIR /app
