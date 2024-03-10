@@ -38,13 +38,9 @@ from sqlalchemy.orm import selectinload
 
 from jsonplaceholder_requests import return_data
 
-from models import Base, User, Post
-from models import Session, async_engine
+from models import User, Post
+from models import Session
 
-async def create_tables():
-    # Base.metadata.drop_all(bind=engine)
-    # print(Base.metadata.tables)
-    await Base.metadata.create_all(bind=async_engine)
 
 async def create_user(
     session: AsyncSession,
@@ -112,7 +108,6 @@ async def async_main():
 
 
 def main():
-    asyncio.run(create_tables())
     asyncio.run(async_main())
 
 

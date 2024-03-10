@@ -24,26 +24,20 @@ from sqlalchemy import func
 
 from mixins.created_at_mixin import CreatedAtMixin
 from mixins.user_relation_mixin import UserRelationMixin
-from sqlalchemy import create_engine
 
 from sqlalchemy.ext.asyncio import (
     create_async_engine,
     async_sessionmaker,
 )
 
+
 PG_CONN_URI = os.environ.get("SQLALCHEMY_PG_CONN_URI") or "postgresql+asyncpg://user:example@localhost:5432/blog"
 
-engine = create_engine(
-    # f"sqlite:///{DB_PATH}",
-    PG_CONN_URI,
-    echo=True,
-)
 async_engine = create_async_engine(
     PG_CONN_URI,
     echo=True,
 )
 
-# Base = None
 
 Session = async_sessionmaker(
     bind=async_engine,
@@ -52,7 +46,7 @@ Session = async_sessionmaker(
 )
 
 
-class Base(DeclarativeBase):
+class MyBase(DeclarativeBase):
     id = Column(Integer, primary_key=True)
 
     @declared_attr.directive
@@ -60,7 +54,7 @@ class Base(DeclarativeBase):
         return f"{cls.__name__.lower()}s"
 
 
-class User(CreatedAtMixin, Base):
+class User(CreatedAtMixin, MyBase):
 
     name = Column(String(32), nullable=False, unique=True)
     email = Column(String, nullable=True, unique=True)
@@ -88,7 +82,7 @@ class User(CreatedAtMixin, Base):
         )
 
 
-class Post(CreatedAtMixin, UserRelationMixin, Base):
+class Post(CreatedAtMixin, UserRelationMixin, MyBase):
     title = Column(
         String(100),
         nullable=False,
