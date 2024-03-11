@@ -21,6 +21,7 @@ from sqlalchemy import Text
 from sqlalchemy import Integer
 from sqlalchemy import DateTime
 from sqlalchemy import func
+from sqlalchemy import ForeignKey
 
 from mixins.created_at_mixin import CreatedAtMixin
 from mixins.user_relation_mixin import UserRelationMixin
@@ -60,13 +61,13 @@ class User(CreatedAtMixin, MyBase):
     email = Column(String, nullable=True, unique=True)
     username = Column(String(50), nullable=True, index=True)
 
-    # posts = relationship(
-    #     # accessed through `Post.author`
-    #     "Post",
-    #     back_populates="author",
-    #     uselist=True,
-    #     # cascade="all, delete-orphan",
-    # )
+    posts = relationship(
+        # accessed through `Post.author`
+        "Post",
+        back_populates="author",
+        uselist=True,
+        # cascade="all, delete-orphan",
+    )
 
     def __repr__(self):
         return str(self)
@@ -82,7 +83,7 @@ class User(CreatedAtMixin, MyBase):
         )
 
 
-class Post(CreatedAtMixin, UserRelationMixin, MyBase):
+class Post(CreatedAtMixin, MyBase):
     title = Column(
         String(100),
         nullable=False,
@@ -91,6 +92,13 @@ class Post(CreatedAtMixin, UserRelationMixin, MyBase):
     )
     body = Column(Text, nullable=False, default="", server_default="",)
 
+    user_id = Column(
+        Integer,
+        ForeignKey("users.id"),
+        unique=False,
+        nullable=False,
+    )
+
     published_at = Column(
         DateTime,
         nullable=False,
@@ -98,12 +106,12 @@ class Post(CreatedAtMixin, UserRelationMixin, MyBase):
         server_default=func.now(),
     )
 
-    # author = relationship(
-    #     # accessed through `User.posts`
-    #     "User",
-    #     back_populates="posts",
-    #     uselist=False,
-    # )
+    author = relationship(
+        # accessed through `User.posts`
+        "User",
+        back_populates="posts",
+        uselist=False,
+    )
 
     def __repr__(self):
         return str(self)

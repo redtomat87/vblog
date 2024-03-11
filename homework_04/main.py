@@ -36,7 +36,7 @@ from sqlalchemy.orm import Session, defer
 from sqlalchemy.orm import joinedload
 from sqlalchemy.orm import selectinload
 
-from jsonplaceholder_requests import return_data
+from jsonplaceholder_requests import fetch_users_data, fetch_posts_data
 
 from models import User, Post
 from models import Session
@@ -64,46 +64,48 @@ async def create_user(
 
 async def create_posts(
     session: AsyncSession,
-    user: User,
-    *posts_titles: str,
-) -> list[Post]:
-    posts = [
-        # create a new post for this user
-        Post(title=title, user_id=user.id)
-        # for each title in titles
-        for title in posts_titles
-    ]
-    session.add_all(posts)
+    title: str,
+    body: str,
+    user_id: int
+) -> Post:
+    post = Post(
+        title=title,
+        body=body,
+        user_id=user_id
+    )
+
+    session.add(post)
     await session.commit()
 
-    for post in posts:
-        print(post)
+    print(post)
 
-    print(posts)
-
-    return posts
+    return post
 
 async def async_main():
+
     async with Session() as session:
-      user: User = await create_user(
-        session,
-        "john",
-        "john snow",
-        "john@bg.com"
-    )
-    # users_data = await return_data()
-    # result = [{'name': user['name'], 'username': user['username']} for user in users_data]
-    # print(repr(result))
-    # async with Session() as session:
-    #     for user in users_data:
-    #       user: User = await create_user(
-    #           session,
-    #           name=user['name'],
-    #           username=user['username'],
-    #           email=user['email']
-            
-    #     ) 
         
+        users_data, posts_data = await asyncio.gather(
+            fetch_users_data(),
+            fetch_posts_data(),
+        )
+
+        for user in users_data:
+            user: User = await create_user(
+                session,
+                name=user['name'],
+                username=user['username'],
+                email=user['email']  
+           ) 
+
+        for post in posts_data:
+            post: Post = await create_posts(
+                session,
+                title = post['title'],
+                body = post['body'],
+                user_id = post['userId']            
+          )
+            
         
 
 
