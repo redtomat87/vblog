@@ -24,7 +24,6 @@ from sqlalchemy import func
 from sqlalchemy import ForeignKey
 
 from mixins.created_at_mixin import CreatedAtMixin
-from mixins.user_relation_mixin import UserRelationMixin
 
 from sqlalchemy.ext.asyncio import (
     create_async_engine,

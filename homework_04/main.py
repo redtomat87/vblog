@@ -9,32 +9,15 @@
             - загрузка пользователей и постов должна выполняться конкурентно (параллельно) 
               при помощи [`asyncio.gather`](https://docs.python.org/3/library/asyncio-task.html#running-tasks-concurrently)
             - функции должны создавать новые объекты (например списки со словарями) и возвращать их как результат. 
-              Например:
-              ```python
-              users_data: List[dict]
-              posts_data: List[dict]
-              users_data, posts_data = await asyncio.gather(
-                  fetch_users_data(),
-                  fetch_posts_data(),
-              )
-              ```
 - добавление пользователей и постов в базу данных
   (используйте полученные из запроса данные, передайте их в функцию для добавления в БД)
 - закрытие соединения с БД
 """
 
 import asyncio
-from typing import Sequence
 
-from sqlalchemy import select, update
-from sqlalchemy import and_
-from sqlalchemy import func
-from sqlalchemy import or_
 from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy.engine import Result
-from sqlalchemy.orm import Session, defer
-from sqlalchemy.orm import joinedload
-from sqlalchemy.orm import selectinload
+from sqlalchemy.orm import Session
 
 from jsonplaceholder_requests import fetch_users_data, fetch_posts_data
 
@@ -42,44 +25,45 @@ from models import User, Post
 from models import Session
 
 
-async def create_user(
+async def create_users(
     session: AsyncSession,
-    name: str,
-    username: str,
-    email: str | None = None,
-) -> User:
-    user = User(
-        name=name,
-        username=username,
-        email=email,
-    )
-    session.add(user)
+    *users_data
+) -> list[User]:
+    
+    users = []
+    for user_data in users_data:
+        user = User(
+            name=user_data['name'],
+            username=user_data['username'],
+            email=user_data['email']
+        )
+        users.append(user)
+
+    session.add_all(users)
     await session.commit()
 
-    print("saved user")
-    print("user info:", user)
-    # session.refresh(user)
+    return users
 
-    return user
 
 async def create_posts(
     session: AsyncSession,
-    title: str,
-    body: str,
-    user_id: int
-) -> Post:
-    post = Post(
-        title=title,
-        body=body,
-        user_id=user_id
-    )
+    *posts_data
+) -> list[Post]:
+    
+    posts = []                                 
+    for post in posts_data:
+        post = Post(
+            title = post['title'],
+            body = post['body'],
+            user_id = post['userId']            
+        )
+        posts.append(post)
 
-    session.add(post)
+    session.add_all(posts)
     await session.commit()
 
-    print(post)
+    return posts
 
-    return post
 
 async def async_main():
 
@@ -90,25 +74,10 @@ async def async_main():
             fetch_posts_data(),
         )
 
-        for user in users_data:
-            user: User = await create_user(
-                session,
-                name=user['name'],
-                username=user['username'],
-                email=user['email']  
-           ) 
-
-        for post in posts_data:
-            post: Post = await create_posts(
-                session,
-                title = post['title'],
-                body = post['body'],
-                user_id = post['userId']            
-          )
+        await create_users(session, *users_data)
+        await create_posts(session, *posts_data)
             
-        
-
-
+      
 def main():
     asyncio.run(async_main())
 

@@ -25,15 +25,15 @@ async def fetch_json(url: str) -> dict:
 
 async def fetch_users_data():
     common.configure_logging()
-    log.info("fetch_users_data")
+  #  log.info("fetch_users_data")
     users_data = await fetch_json(USERS_DATA_URL)
- #   log.info("users_data json: %s", users_data)
+  #  log.info("users_data json: %s", users_data)
     return users_data
 
 
 async def fetch_posts_data():
     common.configure_logging()
-    log.info("fetch_posts_data")
+#    log.info("fetch_posts_data")
     posts_data = await fetch_json(POSTS_DATA_URL)
 #    log.info("posts_data json: %s", posts_data)
     return posts_data
