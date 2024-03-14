@@ -57,13 +57,13 @@ class MyBase(DeclarativeBase):
 class User(CreatedAtMixin, MyBase):
 
     name = Column(String(32), nullable=False, unique=True)
-    email = Column(String, nullable=True, unique=True)
+    email = Column(String, nullable=True, unique=False)
     username = Column(String(50), nullable=True, index=True)
 
     posts = relationship(
         # accessed through `Post.author`
         "Post",
-        back_populates="author",
+        back_populates="user",
         uselist=True,
         # cascade="all, delete-orphan",
     )
@@ -105,7 +105,7 @@ class Post(CreatedAtMixin, MyBase):
         server_default=func.now(),
     )
 
-    author = relationship(
+    user = relationship(
         # accessed through `User.posts`
         "User",
         back_populates="posts",
