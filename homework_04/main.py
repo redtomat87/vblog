@@ -26,7 +26,7 @@ from models import Session
 from alembic.config import Config
 from alembic import command
 
-alembic_cfg = Config("alembic.ini")
+alembic_cfg = Config("./homework_04/alembic.ini")
 command.upgrade(alembic_cfg, "head")
 
 
