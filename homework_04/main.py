@@ -23,6 +23,11 @@ from jsonplaceholder_requests import fetch_users_data, fetch_posts_data
 
 from models import User, Post
 from models import Session
+from alembic.config import Config
+from alembic import command
+
+alembic_cfg = Config("alembic.ini")
+command.upgrade(alembic_cfg, "head")
 
 
 async def create_users(
