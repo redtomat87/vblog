@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Create post
+{% endblock %}
+
+{% block body %}
+  <h1>Create a new post</h1>
+
+  <form method="post">
+    <div class="mb-3">
+      <label
+        for="post-name-id"
+        class="form-label"
+      >Title</label>
+      <input
+        type="text"
+        class="form-control"
+        id="post-name-id"
+        name="post-name"
+        placeholder="Desktop"
+        required
+      >
+    </div>
+    <div class="mb-3">
+      <label
+        for="post-name-id"
+        class="form-label"
+      >Nthjfdsajklkfhsasdjkfhlaskdjhrfs</label>
+      <input
+        type="text"
+        class="form-control"
+        id="post-name-id"
+        name="post-name"
+        placeholder="Desktop"
+        required
+      >
+    </div>
+    <button type="submit" class="btn btn-lg btn-primary">Add</button>
+  </form>
+  {% include 'posts/back-to-posts-list.html' %}
+
+{% endblock %}

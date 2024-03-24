@@ -15,6 +15,7 @@ from flask import Flask, request, render_template
 
 from views.items import items_app
 from views.products import products_app
+from views.posts import posts_app
 
 app = Flask(__name__)
 app.register_blueprint(
@@ -25,6 +26,9 @@ app.register_blueprint(
     products_app,
 )
 
+app.register_blueprint(
+    posts_app,
+)
 
 @app.get("/", endpoint="index")
 def index():
@@ -34,6 +38,10 @@ def index():
 @app.get("/about/", endpoint="about")
 def about():
     return render_template("about.html")
+
+# @app.get("/posts/", endpoint="posts")
+# def about():
+#     return render_template("posts/list.html")
 
 
 @app.route("/hello/")

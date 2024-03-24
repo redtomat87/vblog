@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Posts #{{ posts.id }}
+{% endblock %}
+
+{% block body %}
+  <h1>Posts #{{ posts.id }} {{ posts.name }} details</h1>
+  {% include 'postss/back-to-posts-list.html' %}
+{% endblock %}
