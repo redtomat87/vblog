@@ -11,7 +11,7 @@
 в навигационную панель добавьте ссылки на главную страницу / и на страницу /about/ при помощи url_for
 """
 
-from flask import Flask, request
+from flask import Flask, request, render_template
 
 from views.items import items_app
 from views.products import products_app
@@ -26,20 +26,14 @@ app.register_blueprint(
 )
 
 
-@app.get("/")
+@app.get("/", endpoint="index")
 def index():
-    return "Hello, World!"
+    return render_template("index.html")
 
 
-# @app.get("/hello/")
-# def hello_view():
-#     name = request.args.get("name", "")
-#     name = name.strip()
-#     if not name:
-#         name = "World"
-#     # return {"message": "Hello, World!"}
-#     # return jsonify([{"message": "Hello, World!"}])
-#     return jsonify(message=f"Hello, {name}!")
+@app.get("/about/", endpoint="about")
+def about():
+    return render_template("about.html")
 
 
 @app.route("/hello/")
