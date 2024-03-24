@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "homework-06"
+version = "0.1.0"
+description = ""
+authors = ["redtomat87 <mr_tomat@mail.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+flask = "^3.0.2"
+psycopg = "^3.1.18"
+sqlalchemy = "^2.0.28"
+flask-sqlalchemy = "^3.1.1"
+flask-migrate = "^4.0.5"
+aiohttp = "^3.9.3"
+asyncpg = "^0.29.0"
+
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.2.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[virtualenvs]
+create = false

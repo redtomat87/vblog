@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Index
+{% endblock %}
+
+{% block head %}
+{% endblock %}
+
+{% block body %}
+  <h1
+    id="main-header"
+    class="green"
+  >Welcome to Blogs!</h1>
+
+
+  <div class="container" class="col">
+    <div>Здесь вы найдете разнообразные и увлекательные статьи от разных авторов со всего мира. Мы предлагаем уникальные взгляды на самые разные темы — от путешествий до технологий, от культуры до науки. <br> 
+      <br>
+      <button type="button" class="btn btn-primary">
+        <a class="dropdown-item"
+        href="{{ url_for('about') }}" 
+        >Подробнее о нас
+        </a>
+      </button>
+      <br>
+    </div>
+    <div class="container" class="col"> 
+      <dl class="text-break">
+      <dt class="col-sm-3">Разнообразие тем</dt>
+      <dd class="col-sm-9">У нас есть статьи на самые разные темы — от искусства до политики, от спорта до науки. Вы всегда найдете что-то интересное для себя.</dd>
+    
+      <dt class="col-sm-3">Авторы-эксперты</dt>
+      <dd class="col-sm-9">
+        <p>Наши авторы — профессионалы в своих областях. Они делятся своим опытом, знаниями и страстью к темам, о которых пишут.</p>
+      </dd>
+    
+      <dt class="col-sm-3">Сообщество</dt>
+      <dd class="col-sm-9">Присоединившись к нашему блогу, вы становитесь частью большого и дружелюбного сообщества. Обменивайтесь мнениями, задавайте вопросы и находите новых друзей.</dd>
+    
+      <figure class="text-center">
+        <blockquote class="blockquote">
+          <p>Оставайтесь с нами и погрузитесь в увлекательный мир блогов!</p>
+        </blockquote>
+      </figure>
+      </dl>
+    </div>
+  </div>
+
+  <div class="container" class="col">
+    <div id="span-text-clicked-times"
+         class="text-upper-case"
+    >Clicked times: <span id="clicked-times">0</span>
+    </div>
+    <button
+      id="btn-click"
+      class="btn btn-outline-success"
+    >Понравилось!
+    </button>
+  </div>
+
+
+  <script>
+    const btnClick = document.getElementById('btn-click')
+    const clickedTimesSpan = document.getElementById('clicked-times')
+    let clickCount = 0
+
+    function increaseAndShowClicks() {
+      clickCount += 1
+      clickedTimesSpan.innerText = clickCount.toString()
+    }
+
+    btnClick.addEventListener('click', increaseAndShowClicks)
+  </script>
+{% endblock %}
