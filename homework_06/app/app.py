@@ -12,16 +12,30 @@
 """
 
 from flask import Flask, request, render_template
-
+from flask_migrate import Migrate
+from asgiref.wsgi import WsgiToAsgi
 from views.items import items_app
 from views.products import products_app
 from views.posts import posts_app
 
+
+import config
+from models import db
+
+
 app = Flask(__name__)
+asgi_app = WsgiToAsgi(app)
 app.register_blueprint(
     items_app,
     # url_prefix="/items",
 )
+
+app.config.update(
+    SECRET_KEY="6fc01f2db60feff0f53537060",
+    SQLALCHEMY_DATABASE_URI=config.SQLALCHEMY_DATABASE_URI,
+    SQLALCHEMY_ECHO=config.SQLALCHEMY_ECHO,
+)
+
 app.register_blueprint(
     products_app,
 )
@@ -29,6 +43,10 @@ app.register_blueprint(
 app.register_blueprint(
     posts_app,
 )
+
+db.init_app(app)
+migrate = Migrate(app, db)
+
 
 @app.get("/", endpoint="index")
 def index():
@@ -38,6 +56,8 @@ def index():
 @app.get("/about/", endpoint="about")
 def about():
     return render_template("about.html")
+
+
 
 # @app.get("/posts/", endpoint="posts")
 # def about():

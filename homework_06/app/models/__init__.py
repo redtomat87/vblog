@@ -2,7 +2,7 @@ __all__ = (
     "Base",
     "db",
     "User",
-    # "Product",
+    "Product",
     "Post",
     # "UserProfile",
     # "Tag",
@@ -16,10 +16,10 @@ from .base import Base
 from .db import db
 from .user import User
 from .post import Post
+from .product import Product
 from .models import Session
 from .models import PG_CONN_URI
-from views.posts import posts_app
-# from .post import Post
+# from views.posts import posts_app
 # from .user_profile import UserProfile
 # from .tag import Tag
 # from .posts_tags_association import PostsTagsAssociation

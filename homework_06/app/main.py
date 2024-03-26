@@ -31,6 +31,9 @@ alembic_cfg = Config("alembic.ini")
 command.upgrade(alembic_cfg, "head")
 
 
+
+
+
 async def create_users(
     session: AsyncSession,
     *users_data
