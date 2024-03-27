@@ -16,9 +16,9 @@ from flask_migrate import Migrate
 
 #from asgiref.wsgi import WsgiToAsgi
 
-from homework_06.app.views.posts import items_app
-from homework_06.app.views.posts import products_app
-from homework_06.app.views.posts import posts_app
+from views.items import items_app
+from views.products import products_app
+from views.posts import posts_app
 #import psycopg
 # print(psycopg)
 

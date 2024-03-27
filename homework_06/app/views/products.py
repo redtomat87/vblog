@@ -7,7 +7,7 @@ from flask import (
 )
 from werkzeug.exceptions import BadRequest, NotFound
 
-from .. import crud
+from views import crud
 
 products_app = Blueprint(
     "products_app",
