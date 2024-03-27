@@ -23,7 +23,7 @@ def get_products() -> list[Product]:
 
 
 def create_post(title: str, body: str) -> Post:
-    post = Post(title=title, body=body)
+    post = Post(title=title, body=body, user_id="1")
     db.session.add(post)
     db.session.commit()
     return post

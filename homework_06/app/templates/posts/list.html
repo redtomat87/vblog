@@ -8,7 +8,7 @@
 {% block body %}
   <h1>Posts</h1>
   <div class="list-group my-3">
-     {% for p in posts %}
+     {% for p in posts|reverse %}
       <a
         class="
           list-group-item

@@ -14,13 +14,9 @@
 from flask import Flask, request, render_template
 from flask_migrate import Migrate
 
-#from asgiref.wsgi import WsgiToAsgi
-
 from views.items import items_app
 from views.products import products_app
 from views.posts import posts_app
-#import psycopg
-# print(psycopg)
 
 import config
 from models import db
@@ -28,7 +24,6 @@ from models import db
 
 app = Flask(__name__)
 
-#asgi_app = WsgiToAsgi(app)
 
 app.register_blueprint(
     items_app,
@@ -36,7 +31,6 @@ app.register_blueprint(
 )
 
 app.config.update(
-    SECRET_KEY="6fc01f2db60feff0f53537060",
     SQLALCHEMY_DATABASE_URI=config.SQLALCHEMY_DATABASE_URI,
     SQLALCHEMY_ECHO=config.SQLALCHEMY_ECHO,
 )
@@ -82,4 +76,4 @@ def hello_path_view(name: str | None = None):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
