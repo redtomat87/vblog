@@ -26,7 +26,7 @@ class Post(CreatedAtMixin, db.Model):
 
     user_id = Column(
         Integer,
-        ForeignKey("users.id"),
+        ForeignKey("user.id"),
         unique=False,
         nullable=False,
     )
