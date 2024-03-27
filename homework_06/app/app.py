@@ -13,18 +13,23 @@
 
 from flask import Flask, request, render_template
 from flask_migrate import Migrate
-from asgiref.wsgi import WsgiToAsgi
-from views.items import items_app
-from views.products import products_app
-from views.posts import posts_app
 
+#from asgiref.wsgi import WsgiToAsgi
+
+from homework_06.app.views.posts import items_app
+from homework_06.app.views.posts import products_app
+from homework_06.app.views.posts import posts_app
+#import psycopg
+# print(psycopg)
 
 import config
 from models import db
 
 
 app = Flask(__name__)
-asgi_app = WsgiToAsgi(app)
+
+#asgi_app = WsgiToAsgi(app)
+
 app.register_blueprint(
     items_app,
     # url_prefix="/items",
@@ -36,6 +41,9 @@ app.config.update(
     SQLALCHEMY_ECHO=config.SQLALCHEMY_ECHO,
 )
 
+db.init_app(app)
+migrate = Migrate(app, db)
+
 app.register_blueprint(
     products_app,
 )
@@ -43,9 +51,6 @@ app.register_blueprint(
 app.register_blueprint(
     posts_app,
 )
-
-db.init_app(app)
-migrate = Migrate(app, db)
 
 
 @app.get("/", endpoint="index")

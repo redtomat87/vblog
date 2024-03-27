@@ -10,10 +10,12 @@ from sqlalchemy import ForeignKey
 
 from sqlalchemy.orm import relationship
 
+from models.db import db
+
 from models.base import Base
 from models.mixins.created_at_mixin import CreatedAtMixin
 
-class Post(CreatedAtMixin, Base):
+class Post(CreatedAtMixin, db.Model):
     title = Column(
         String(100),
         nullable=False,
@@ -48,7 +50,7 @@ class Post(CreatedAtMixin, Base):
 
     def __str__(self):
         return (
-            f"Post(id={self.id}, "
+            f"Post_id={self.id}, "
             f"title={self.title!r}, "
             f"published_at={self.published_at!r}, "
             f"user_id={self.user_id})"

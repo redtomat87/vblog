@@ -3,7 +3,7 @@ from flask import (
     request,
     render_template,
     redirect,
-    url_for,
+    url_for, flash, 
 )
 from werkzeug.exceptions import BadRequest, NotFound
 from models import Post, db
@@ -20,8 +20,8 @@ posts_app = Blueprint(
     "/",
     endpoint="list",
 )
-async def get_posts():
-    return await render_template(
+def get_posts():
+    return render_template(
         "posts/list.html",
         posts=crud.get_posts(),
     )
@@ -47,12 +47,12 @@ def create_post():
         raise BadRequest("body-post is required!")
 
 
-    post = crud.create_posts(
+    post = crud.create_post(
         title=title,
         body=body,
     )
 
-    flash(f"Created product {title!r}!", category="success")
+    flash(f"Created title {title!r}!", category="success")
     # return {"product": product.name, "id": product.id}
     url = url_for(
         "posts_app.details",
@@ -71,7 +71,7 @@ def get_post_details(post_id: int):
         description=f"Post #{post_id} not found!",
     )
     return render_template(
-        "posts_app/details.html",
+        "posts/details.html",
         post=post,
     )
 

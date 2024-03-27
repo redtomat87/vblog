@@ -15,7 +15,6 @@ products_app = Blueprint(
     url_prefix="/products",
 )
 
-
 @products_app.get(
     "/",
     endpoint="list",

@@ -17,7 +17,7 @@ from sqlalchemy.ext.asyncio import (
 )
 
 
-PG_CONN_URI = os.environ.get("SQLALCHEMY_PG_CONN_URI") or "postgresql+asyncpg://user:example@localhost:5432/blog"
+PG_CONN_URI = os.environ.get("SQLALCHEMY_PG_CONN_URI") or "postgresql+psycopg://user:example@localhost:5432/blog"
 
 
 async_engine = create_async_engine(

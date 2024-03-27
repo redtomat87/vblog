@@ -16,8 +16,8 @@
           list-group-item-action
           list-group-item-light
         "
-        href="{{ url_for('posts_app') }}"
-      >{{ p.name }}</a>
+        href="{{ url_for('posts_app.details', post_id=p.id) }}"
+      >{{ p.title }}</a>
       <!-- sadfasdfas -->
       {#
       sdfsdfsdf

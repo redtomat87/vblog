@@ -9,7 +9,7 @@ from models.db import db
 from models.mixins.created_at_mixin import CreatedAtMixin
 from models.base import Base
 
-class User(CreatedAtMixin, Base):
+class User(CreatedAtMixin, db.Model):
 
     name = Column(String(32), nullable=False, unique=True)
     email = Column(String, nullable=True, unique=False)
