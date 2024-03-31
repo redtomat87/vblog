@@ -16,11 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path 
-#from users.views import users_views
+import users.views as users_views
 from vblog import settings
 
 urlpatterns = [
-  #  path('', users_views.index, name='index'),
+    path('', users_views.index),
 
     path('admin/', admin.site.urls),
 ]

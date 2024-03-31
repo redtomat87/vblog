@@ -26,10 +26,10 @@ SECRET_KEY = 'django-insecure-k&-i96^fpuvzw59*sb*6u=1bwoh=w*cp-x5djh5sxjlrp8s($4
 DEBUG = True
 
 ALLOWED_HOSTS = []
-# INTERNAL_IPS = [
-#     "localhost",
-#     "127.0.0.1",
-# ]
+INTERNAL_IPS = [
+    "localhost",
+    "127.0.0.1",
+]
 
 # Application definition
 
@@ -62,7 +62,7 @@ ROOT_URLCONF = 'vblog.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
