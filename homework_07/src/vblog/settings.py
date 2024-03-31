@@ -26,10 +26,10 @@ SECRET_KEY = 'django-insecure-k&-i96^fpuvzw59*sb*6u=1bwoh=w*cp-x5djh5sxjlrp8s($4
 DEBUG = True
 
 ALLOWED_HOSTS = []
-INTERNAL_IPS = [
-    "localhost",
-    "127.0.0.1",
-]
+# INTERNAL_IPS = [
+#     "localhost",
+#     "127.0.0.1",
+# ]
 
 # Application definition
 
@@ -41,12 +41,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # 3-d party
-    "debug_toolbar",
+    'debug_toolbar',
     # custom
+    'users',
 ]
 
 MIDDLEWARE = [
-    "debug_toolbar.middleware.DebugToolbarMiddleware",
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -112,7 +113,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'Europe/Moscow'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 

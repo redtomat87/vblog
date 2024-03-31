@@ -9,7 +9,7 @@ readme = "README.md"
 python = "^3.11"
 poetry = "1.8.2"
 Django = "^5.0.3"
-django-debug-toolbar-django13 = "^0.8.4"
+django-debug-toolbar = "^4.3.0"
 
 
 [build-system]

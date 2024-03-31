@@ -4,9 +4,9 @@ from django.db import models
 
 class User(models.Model):
 
-    name = models.CharField(max_length=32, nullable=False, unique=True)
-    email = models.CharField(max_length=32, nullable=True, unique=False)
-    username = models.CharField(max_length=32, nullable=True, index=True)
+    name = models.CharField(max_length=32, null=False, unique=True)
+    email = models.CharField(max_length=32, null=True, unique=False)
+    username = models.CharField(max_length=32, null=True)
     age = models.PositiveIntegerField(null=True)
 
     def __repr__(self):
