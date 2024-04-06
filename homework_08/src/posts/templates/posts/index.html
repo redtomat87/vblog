@@ -1,0 +1,14 @@
+{% extends 'posts/base.html' %}
+
+{% block content %}
+    <h3>posts ({{ users_qty }})</h3>
+    <ul>
+        {% for item in posts %}
+            <li>
+                {{ item.name }} ({{ item.kind }})
+            </li>
+        {% endfor %}
+    </ul>
+    <h4>First</h4>
+    <p>{{ posts.0.name }}</p>
+{% endblock %}

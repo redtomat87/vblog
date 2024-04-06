@@ -1,0 +1,14 @@
+{% extends 'writers/base.html' %}
+
+{% block content %}
+    <h3>writers ({{ writers_qty }})</h3>
+    <ul>
+        {% for item in writers %}
+            <li>
+                {{ item.name }} ({{ item.kind }})
+            </li>
+        {% endfor %}
+    </ul>
+    <h4>First</h4>
+    <p>{{ writers.0.name }}</p>
+{% endblock %}
