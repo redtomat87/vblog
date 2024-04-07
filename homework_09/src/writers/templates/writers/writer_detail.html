@@ -1,0 +1,14 @@
+{% extends 'writers/base.html' %}
+
+{% block title %}
+  Super {{ block.super }}
+{% endblock %}
+
+{% block content %}
+<h3>{{ writer.name }}</h3>
+<ul>
+    {% for writer in object.writer_set.all %}
+        <li>{{ writer }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
