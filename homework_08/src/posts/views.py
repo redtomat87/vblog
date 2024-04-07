@@ -14,8 +14,8 @@ def index(request):
     # print(animals.query)
 
     context = {
-        'Posts': posts,
-        'Posts count': posts_qty,
+        'posts': posts,
+        'posts count': posts_qty,
     }
 
     return render(request, 'posts/index.html', context=context)

@@ -1,11 +1,11 @@
 {% extends 'posts/base.html' %}
 
 {% block content %}
-    <h3>posts ({{ users_qty }})</h3>
+    <h3>posts ({{ posts_qty }})</h3>
     <ul>
         {% for item in posts %}
             <li>
-                {{ item.name }} ({{ item.kind }})
+                {{ item.title }} ({{ item.body }})
             </li>
         {% endfor %}
     </ul>
