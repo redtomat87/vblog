@@ -2,6 +2,7 @@ from django.core.management.base import BaseCommand
 from datetime import datetime
 from posts.models import Post, Tags
 from writers.models import Writer, WriterProfile
+from myauth.models import VblogUser
 
 
 class Command(BaseCommand):
@@ -33,5 +34,13 @@ class Command(BaseCommand):
         # Создаем профили писателей
         profile1 = WriterProfile.objects.create(writer=writer1, biography='John Doe is a technology enthusiast.')
         profile2 = WriterProfile.objects.create(writer=writer2, biography='Jane Doe loves traveling and writing about her experiences.')
+
+        su = VblogUser.objects.filter(username='vk').first()
+        if not su:
+            VblogUser.objects.create_superuser(
+                username='vk',
+                email='mr_tomat@mail.ru',
+                password='pass',
+            )
 
         self.stdout.write(self.style.SUCCESS('DB is ready'))

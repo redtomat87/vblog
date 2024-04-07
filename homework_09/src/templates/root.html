@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>
         {% block title %}
-            vblog
+        vblog
         {% endblock %}
     </title>
     {% block css %}
@@ -12,13 +13,21 @@
     {% block js %}
     {% endblock %}
 </head>
+
 <body>
-{% block content %}
-{% endblock %}
-<footer>
-    {% block footer %}
-        vblog, 2024
+    {% block content %}
+    {% if user.is_authenticated %}
+    {{ user.username }}
+    <a href="/auth/logout/">Log out</a>
+    {% else %}
+    <a href="{% url 'myauth:login' %}">Log in</a>
+    {% endif %}
     {% endblock %}
-</footer>
+    <footer>
+        {% block footer %}
+        vblog, 2024
+        {% endblock %}
+    </footer>
 </body>
+
 </html>

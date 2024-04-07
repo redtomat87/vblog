@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     # 3-d party
     'debug_toolbar',
     # custom
+    'myauth',
     'writers',
     'posts',
 ]
@@ -130,3 +131,8 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# custom user
+AUTH_USER_MODEL = 'myauth.VblogUser'
+LOGIN_URL = '/auth/login/'
+LOGIN_REDIRECT_URL = '/'

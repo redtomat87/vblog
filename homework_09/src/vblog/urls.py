@@ -27,6 +27,9 @@ urlpatterns = [
     path('writer/create/', writers_views.WriterCreate.as_view(), name='create_writer'),
     # path('animal/<int:pk>/', animals_views.animal),
     path('writer/<int:pk>/', writers_views.WriterDetail.as_view(), name='writer_detail'),
+    
+    # auth
+    path('auth/', include('myauth.urls', namespace='myauth')),
 
     path('admin/', admin.site.urls),
 ]
