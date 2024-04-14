@@ -21,7 +21,7 @@ import posts.views as posts_views
 from vblog import settings
 
 urlpatterns = [
-    path('', writers_views.WritersList.as_view()),
+    path('', writers_views.WritersList.as_view(), name='index'),
     path('posts/', posts_views.index, name='posts'),
 
     path('writer/create/', writers_views.WriterCreate.as_view(), name='create_writer'),

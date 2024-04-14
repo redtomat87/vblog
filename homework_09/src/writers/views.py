@@ -11,6 +11,7 @@ def index(request):
     context = {
         'writers': writers,
         'writers_qty': writers_qty,
+        'endpoint': request.resolver_match.view_name,
     }
 
     return render(request, 'writers/index.html', context=context)
