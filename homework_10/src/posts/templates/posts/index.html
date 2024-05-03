@@ -1,31 +1,6 @@
 {% extends 'posts/base.html' %}
 
 {% block content %}
-<nav class="navbar navbar-expand-sm bg-body-tertiary">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'index' %}">V-blog</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-collapsable" aria-controls="navbar-collapsable" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbar-collapsable">
-            <ul class="navbar-nav me-auto mb-2 mb-sm-0">
-                <li class="nav-item">
-                    <a class="nav-link{% if request.resolver_match.view_name == 'index' %} active{% endif %}" href="{% url 'index' %}">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link{% if request.resolver_match.view_name == 'posts' %} active{% endif %}" href="{% url 'posts' %}">Posts</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link{% if request.resolver_match.view_name == 'create_writer' %} active{% endif %}" href="{% url 'create_writer' %}">Зарегистрироваться</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link{% if request.resolver_match.view_name == 'myauth' %} active{% endif %}" href="{% url 'myauth:login' %}">Log in</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
     <h3>posts ({{ posts_qty }})</h3>
     <ul>
         {% for item in posts %}

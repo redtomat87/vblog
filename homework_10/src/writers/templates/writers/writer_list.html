@@ -8,7 +8,7 @@
 <a href="{% url 'myauth:login' %}">Log in</a>
 {% endif %}
 
-<div class="pagination">
+<div class="pagination container bg-light">
     <span class="step-links">
         {% if page_obj.has_previous %}
         <a href="?page=1">&laquo; first</a>
@@ -26,35 +26,13 @@
     </span>
 </div>
 
-<nav class="navbar navbar-expand-sm bg-body-tertiary">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'index' %}">V-blog</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-collapsable" aria-controls="navbar-collapsable" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbar-collapsable">
-            <ul class="navbar-nav me-auto mb-2 mb-sm-0">
-                <li class="nav-item">
-                    <a class="nav-link{% if request.resolver_match.view_name == 'index' %} active{% endif %}" href="{% url 'index' %}">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link{% if request.resolver_match.view_name == 'posts' %} active{% endif %}" href="{% url 'posts' %}">Posts</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link{% if request.resolver_match.view_name == 'create_writer' %} active{% endif %}" href="{% url 'create_writer' %}">Зарегистрироваться</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link{% if request.resolver_match.view_name == 'myauth' %} active{% endif %}" href="{% url 'myauth:login' %}">Log in</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
 
+
+<div class="container bg-light">
   <h1 id="main-header" class="green">Welcome to Blogs!</h1>
-
+</div>
 {% comment %}
-<div class="container" class="col">
+<div class="container col">
 <div>Здесь вы найдете разнообразные и увлекательные статьи от разных авторов со всего мира. Мы предлагаем уникальные взгляды на самые разные темы — от путешествий до технологий, от культуры до науки. <br> 
   <br>
   <button type="button" class="btn btn-primary">
@@ -66,8 +44,8 @@
   <br>
 </div>
 {% endcomment %}
-<div class="container">
-    <dl class="text-break">
+<div class="container bg-light">
+    <dl class="text-center">
         <dt class="col-sm-3">Разнообразие тем</dt>
         <dd class="col-sm-9">У нас есть статьи на самые разные темы — от искусства до политики, от спорта до науки. Вы всегда найдете что-то интересное для себя.</dd>
         <dt class="col-sm-3">Авторы-эксперты</dt>
@@ -85,7 +63,7 @@
 </div>
 
 
-<div class="container" class="col">
+<div class="container col bg-light">
 <div id="span-text-clicked-times"
      class="text-upper-case"
 >Clicked times: <span id="clicked-times">0</span>
@@ -111,7 +89,7 @@ function increaseAndShowClicks() {
 btnClick.addEventListener('click', increaseAndShowClicks)
 </script>
 
-<div>
+<div class="container bg-light">
     <ul>
         <li><a href="{% url 'posts' %}">Ссылка на страницу постов</a></li>
         <li><a href="{% url 'create_writer' %}">Зарегистрироваться</a></li>
