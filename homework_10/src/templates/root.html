@@ -44,7 +44,7 @@
             </div>
         </div>
     </nav>
-    
+
     {% block content %}
     {% if user.is_authenticated %}
     {{ user.username }}
@@ -55,7 +55,7 @@
 
     
     {% endblock %}
-    <footer class="blockquote-footer fixed-bottom">
+    <footer class="blockquote-footer fixed-bottom p-3">
 
         {% block footer %}
         &copy; vblog, 2024

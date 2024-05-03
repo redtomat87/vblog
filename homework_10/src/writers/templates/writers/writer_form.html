@@ -1,9 +1,11 @@
 {% extends 'writers/base.html' %}
 
 {% block content %}
+<div class="container p-3">
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" value="create">
     </form>
+</div>
 {% endblock %}
