@@ -19,7 +19,7 @@
                   <u> {{ item.published_at }}</u>
                 </p>
                 <button type="button" class="btn btn-secondary bottom-0 end-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Читать далее">
-                    Читать далее
+                  <a href="{% url 'post_detail' pk=post.pk %}">Читать далее</a>
                   </button> 
               </div>
             </div>

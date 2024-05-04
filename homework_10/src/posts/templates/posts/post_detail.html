@@ -21,7 +21,13 @@
     <h4>First</h4>
     <p>{{ posts.0.name }}</p>
 
-
+    <div class="news-details">
+        <h1>{{ item.title }}</h1>
+        <p>{{ item.text }}</p>
+        <p><strong>Автор:</strong> {{ item.author }}</p>
+        <p><strong>Дата публикации:</strong> {{ item.published_at }}</p>
+        <a href="#" class="read-more">Читать далее</a>
+    </div>
 
 <div class="pagination">
     <span class="step-links">
