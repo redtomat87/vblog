@@ -5,7 +5,7 @@ from posts.models import Post
 
 def index(request):
     posts_qty = Post.objects.count() 
-    posts = Post.objects.all()
+    posts = Post.objects.order_by('published_at')
     # animals = Animal.objects.filter(
     #     name__startswith='po',
     #     # age__gte=3,

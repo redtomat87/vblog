@@ -22,7 +22,9 @@ from vblog import settings
 
 urlpatterns = [
     path('', writers_views.WritersList.as_view(), name='index'),
+
     path('posts/', posts_views.index, name='posts'),
+    path('posts/<int:pk>/', posts_views.index, name='post_detail'),
 
     path('writer/create/', writers_views.WriterCreate.as_view(), name='create_writer'),
     # path('animal/<int:pk>/', animals_views.animal),
