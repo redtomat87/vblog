@@ -38,7 +38,12 @@
                         <a class="nav-link{% if request.resolver_match.view_name == 'create_writer' %} active{% endif %}" href="{% url 'create_writer' %}">Зарегистрироваться</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link{% if request.resolver_match.view_name == 'myauth' %} active{% endif %}" href="{% url 'myauth:login' %}">Log in</a>
+                        {% if user.is_authenticated %}
+                        <form action="{% url 'myauth:logout' %}" method="post"><a class="nav-link" href="/auth/logout/">Log out {{ user.username }}</a></form>
+                        {% else %}
+                        <a class="nav-link" href="{% url 'myauth:login' %}">Log in</a>
+                        {% endif %}
+                        
                     </li>
                 </ul>
             </div>
@@ -46,13 +51,6 @@
     </nav>
 
     {% block content %}
-    {% if user.is_authenticated %}
-    {{ user.username }}
-    <a href="/auth/logout/">Log out</a>
-    {% else %}
-    <a href="{% url 'myauth:login' %}">Log in</a>
-    {% endif %}
-
     
     {% endblock %}
     <footer class="blockquote-footer fixed-bottom p-3">
