@@ -10,23 +10,12 @@
 
 
 {% block content %}
-    <h3 class="p-3">posts ({{ posts_qty }})</h3>
-    <ul>
-        {% for item in posts %}
-            <li>
-                {{ item.title }} ({{ item.published_at }})
-            </li>
-        {% endfor %}
-    </ul>
-    <h4>First</h4>
-    <p>{{ posts.0.name }}</p>
-
-    <div class="news-details">
-        <h1>{{ item.title }}</h1>
-        <p>{{ item.text }}</p>
-        <p><strong>Автор:</strong> {{ item.author }}</p>
-        <p><strong>Дата публикации:</strong> {{ item.published_at }}</p>
-        <a href="#" class="read-more">Читать далее</a>
+    <div class="news-details p-3">
+        <h1>{{ post.title }}</h1>
+        <p>{{ post.body }}</p>
+        <p><strong>Автор:</strong> {{ post.author }}</p>
+        <p><strong>Дата публикации:</strong> {{ post.published_at }}</p>
+        <a href="{% url 'post_detail' pk=post.pk %}"> Читать далее</a>
     </div>
 
 <div class="pagination">
