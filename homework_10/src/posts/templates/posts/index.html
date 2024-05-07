@@ -10,9 +10,11 @@
       </button>
     </div>
     {% else %}
+    <div class="d-grid gap-2">
     <button type="button" class="btn btn-outline-danger">
       <a class="nav-link" href="{% url 'myauth:login' %}">Войдите, чтобы добавить запись</a>
     </button>
+  </div>
     {% endif %}
 
     {% for item in posts %}
