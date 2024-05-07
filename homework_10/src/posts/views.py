@@ -15,6 +15,16 @@ def index(request):
 
     return render(request, 'posts/index.html', context=context)
 
+def create_post(request):
+    posts_qty = Post.objects.count() 
+    posts = Post.objects.order_by('published_at')
+
+    context = {
+        'posts': posts,
+        'posts count': posts_qty,
+    }
+
+    return render(request, 'posts/create_post.html', context=context)
 
 class PostsList(ListView):
     page_title = 'Posts'
@@ -24,6 +34,7 @@ class PostsList(ListView):
 
 class PostCreate(CreateView):
     model = Post
+    page_title = 'create_post'
     fields = '__all__'
     # form_class = ...
     # success_url = ...

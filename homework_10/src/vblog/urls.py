@@ -26,6 +26,8 @@ urlpatterns = [
     path('posts/', posts_views.index, name='posts'),
     path('posts/<int:pk>/', posts_views.PostDetail.as_view(), name='post_detail'),
 
+    path('posts/create_post/', posts_views.PostCreate.as_view(), name='create_post'),
+
     path('writer/create/', writers_views.WriterCreate.as_view(), name='create_writer'),
     # path('animal/<int:pk>/', animals_views.animal),
     path('writer/<int:pk>/', writers_views.WriterDetail.as_view(), name='writer_detail'),

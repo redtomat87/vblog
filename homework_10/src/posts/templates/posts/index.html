@@ -3,16 +3,28 @@
 {% block content %}
     <h1 id="main-header" class="p-3">Последние записи</h1>
 
-    {% for item in posts %}
- 
+    {% if user.is_authenticated %}
+    <div class="d-grid gap-2">
+      <button type="button" class="btn btn-primary">
+        <a class="nav-link" href="{% url 'create_post' %}">Добавить запись</a>
+      </button>
+    </div>
+    {% else %}
+    <button type="button" class="btn btn-outline-danger">
+      <a class="nav-link" href="{% url 'myauth:login' %}">Войдите, чтобы добавить запись</a>
+    </button>
+    {% endif %}
 
-              <!-- News -->
-    <a href="" class="text-dark">
+    {% for item in posts %}
+               <!-- News -->
+    <a href="" class="text-dark p-2">
       <div class="row mb-4 border-bottom pb-2">
         <div class="col-3">
           <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/042.webp"
             class="img-fluid shadow-1-strong rounded" alt="Palm Springs Road" />
-            <button type="button" class="btn btn-light"><a href="{% url 'post_detail' pk=item.pk %}">Читать далее</a></button>
+            <button type="button" class="btn btn-light">
+              <a href="{% url 'post_detail' pk=item.pk %}">Читать далее</a>
+            </button>
         </div>
 
         <div class="col-9">
