@@ -8,7 +8,7 @@ from django import forms
 def index(request):
     posts_qty = Post.objects.count() 
     posts = Post.objects.order_by('published_at')
-    image_url = Images
+    image_url = Images.objects.prefetch_related('post_id').first
     
     context = {
         'posts': posts,
@@ -35,6 +35,9 @@ class PostsList(ListView):
     model = Post
     paginate_by = 2   
 
+    def image_detail(request, pk):
+        image_url = get_object_or_404(Images, pk=pk)
+        return render(request, 'posts/index.html', {'image_url': image_url})
 
 class PostCreate(CreateView):
     model = Post

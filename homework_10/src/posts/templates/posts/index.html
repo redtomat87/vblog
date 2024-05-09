@@ -22,8 +22,12 @@
     <a href="" class="text-dark p-2">
       <div class="row mb-4 border-bottom pb-2">
         <div class="col-3">
-          <img src={{ image_url }} alt="City Image"
+          {% with first_image=item.images.first %}
+          {% if first_image %}
+          <img src="{{ first_image.image_url }}" alt="worked"
             class="img-fluid shadow-1-strong rounded" />
+          {% endif %}
+          {% endwith %}
             <button type="button" class="btn btn-light">
               <a href="{% url 'post_detail' pk=item.pk %}">Читать далее</a>
             </button>
