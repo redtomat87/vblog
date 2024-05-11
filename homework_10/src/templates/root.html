@@ -46,6 +46,13 @@
                         {% endif %}
                         
                     </li>
+                    <li class="nav-item">
+                        {% if user.is_authenticated %}
+                        <form action="{% url 'myauth:profile' %}" method="post"><a class="nav-link" href="/auth/profile/">Профиль</a></form>
+                        {% else %}
+                        {% endif %}
+                        
+                    </li>
                 </ul>
             </div>
         </div>

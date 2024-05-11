@@ -6,8 +6,11 @@
     <h1>Зарегистрироваться</h1>
     <p>Please, sign up using the following form:</p>
     <form action="." method="post">
-        {{ user_form.as_p }}
         {% csrf_token %}
-        <p><input type="submit" value="Create my account"></p>
+        Имя пользователя: <input type="text" name="username"><br>
+        Email: <input type="email" name="email"><br>
+        Пароль: <input type="password" name="password"><br>
+        Пароль еще раз: <input type="password" name="password2"><br>
+        <input type="submit" value="Регистрация">
     </form>
 {% endblock %}
