@@ -4,19 +4,10 @@
 <div class="container">
   <h1 id="main-header" class="green">Welcome to Blogs!</h1>
 </div>
-{% comment %}
 <div class="container col">
-<div>Здесь вы найдете разнообразные и увлекательные статьи от разных авторов со всего мира. Мы предлагаем уникальные взгляды на самые разные темы — от путешествий до технологий, от культуры до науки. <br> 
-  <br>
-  <button type="button" class="btn btn-primary">
-    <a class="dropdown-item"
-    href="{{ url_for('about') }}" 
-    >Подробнее о нас
-    </a>
-  </button>
-  <br>
+<div class="container">
+    <p>Здесь вы найдете разнообразные и увлекательные статьи от разных авторов со всего мира. Мы предлагаем уникальные взгляды на самые разные темы — от путешествий до технологий, от культуры до науки.</p> <br> 
 </div>
-{% endcomment %}
 <div class="container bg-light p-3" >
     <dl class="row">
         <dt class="col-sm-3">Разнообразие тем</dt>
@@ -34,16 +25,6 @@
             </blockquote>
         </figure>
     </dl>
-</div>
-
-<div class="container">
-    <ul>
-        <li><a href="{% url 'posts' %}">Ссылка на страницу постов</a></li>
-        <li><a href="{% url 'create_writer' %}">Зарегистрироваться</a></li>
-        {% for writer in writers_list %}
-        <li><a href="{% url 'writer_detail' writer.pk %}">Просмотреть профиль писателя {{ writer.name }}</a></li>
-        {% endfor %}
-    </ul>
 </div>
 
 {% endblock %}

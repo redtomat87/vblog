@@ -2,18 +2,32 @@ from django.shortcuts import render, get_object_or_404
 
 from posts.models import Post, Images
 from django.views.generic import DetailView, ListView, CreateView
-from django import forms
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 def index(request):
-    posts_qty = Post.objects.count() 
+#    posts_qty = Post.objects.count() 
     posts = Post.objects.order_by('published_at')
-    image_url = Images.objects.prefetch_related('post_id').first
-    
+#    image_url = Images.objects.prefetch_related('post_id').first
+
+    default_page = 1
+    paginator = Paginator(posts, 5)
+    page_number = request.GET.get('page', default_page)  # Получаем номер текущей страницы
+    try:
+        page_posts = paginator.page(page_number)
+    except PageNotAnInteger:
+        # Если номер страницы не является целым числом, отображаем первую страницу
+        page_posts = paginator.page(default_page)
+    except EmptyPage:
+        # Если номер страницы находится вне диапазона (например, 9999),
+        # отображаем последнюю доступную страницу
+        page_posts = paginator.page(paginator.num_pages)
+
     context = {
-        'posts': posts,
-        'posts count': posts_qty,
-        'image_url': image_url,
+#        'posts': page_posts,
+#        'posts count': posts_qty,
+#        'image_url': image_url,
+        'page_posts': page_posts,
     }
 
     return render(request, 'posts/index.html', context=context)
@@ -33,7 +47,6 @@ def create_post(request):
 class PostsList(ListView):
     page_title = 'Posts'
     model = Post
-    paginate_by = 2   
 
     def image_detail(request, pk):
         image_url = get_object_or_404(Images, pk=pk)
@@ -54,4 +67,3 @@ class PostDetail(DetailView):
     def post_detail(request, pk):
         post = get_object_or_404(Post, pk=pk)
         return render(request, 'posts/post_detail.html', {'post': post})
-       
