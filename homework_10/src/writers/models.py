@@ -1,19 +1,21 @@
 from django.db import models
-
+from django.contrib.auth.models import AbstractUser
 # Create your models here.
 
-class Writer(models.Model):
+class Writer(AbstractUser):
 
-    name = models.CharField(max_length=32, null=False, unique=True)
-    email = models.CharField(max_length=32, null=True, unique=False)
-    username = models.CharField(max_length=32, null=True)
+    # name = models.CharField(max_length=32, null=False, unique=True)
+    # email = models.CharField(max_length=32, null=True, unique=False)
+    # username = models.CharField(max_length=32, null=True)
     age = models.PositiveIntegerField(null=True)
+    
+    
 
     def __repr__(self):
         return str(self)
 
     def __str__(self):
-        return self.name    
+        return self.username    
 
     class Meta:
         verbose_name = 'Writer'

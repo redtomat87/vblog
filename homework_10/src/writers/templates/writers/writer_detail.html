@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-<h3>{{ writer.name }}</h3>
+<h3>{{ writer.first_name }}</h3>
 <ul>
     {% for writer in object.writer_set.all %}
         <li>{{ writer }}</li>

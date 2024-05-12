@@ -136,7 +136,7 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # custom user
-AUTH_USER_MODEL = 'myauth.VblogUser'
+AUTH_USER_MODEL = 'writers.Writer'
 LOGIN_URL = '/auth/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_URL = '/auth/logout/'

@@ -12,5 +12,11 @@
         Пароль: <input type="password" name="password"><br>
         Пароль еще раз: <input type="password" name="password2"><br>
         <input type="submit" value="Регистрация">
+
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Register</button>
     </form>
+
+    
 {% endblock %}

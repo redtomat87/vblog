@@ -3,18 +3,15 @@
 {% block title %}Зарегистрироваться{% endblock %}
 
 {% block content %}
-    <h1>Профиль</h1>
-    <p>Подробнее:</p>
     <body>
         <h1>Мой профиль</h1>
-        Имя пользователя: {{ user.username }} <br>
-        Email: {{ user.email }}
-        <h1>User Profile</h1>
-        <h2>{{ writer.name }}</h2>
-        <p>Email: {{ writer.email }}</p>
-        <p>Username: {{ writer.username }}</p>
-        <p>Age: {{ writer.age }}</p>
-        <h2>Biography</h2>
-        <p>{{ writer_profile.biography }}</p>
+        Логин: {{ user.username }}<br>
+        Имя пользователя: {{ user.first_name }} <br>
+        Фамилия пользователя: {{ user.last_name }} <br>
+        Email: {{ user.email }} <br>
+        Возраст: {{ user.age }} <br>
+        <br>
+        <h4>Biography</h4>
+        <p>{{ user.writerprofile.biography }}</p>
     </body>
 {% endblock %}

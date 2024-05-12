@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.views.generic import DetailView, ListView, CreateView
 
 from writers.models import Writer
-# Create your views here.
 
 def index(request):
     writers_qty = Writer.objects.count()  # db level -> COUNT()
