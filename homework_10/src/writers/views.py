@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.views.generic import DetailView, ListView, CreateView
-
+from .forms import CustomUserCreationForm
 from writers.models import Writer
+from django.shortcuts import render, redirect
+from django.views.generic.edit import FormView
 
 def index(request):
     writers_qty = Writer.objects.count()  # db level -> COUNT()
@@ -37,12 +39,14 @@ class WritersList(PageTitleMixin, ListView):
     paginate_by = 2
 
 
-class WriterCreate(CreateView):
-    model = Writer
-    fields = '__all__'
-    # form_class = ...
-    # success_url = ...
+class WriterCreate(FormView):
+    template_name = 'writers/writer_form.html'
+    form_class = CustomUserCreationForm
     success_url = '/'
+
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
 
 
 class WriterDetail(PageTitleMixin, DetailView):
