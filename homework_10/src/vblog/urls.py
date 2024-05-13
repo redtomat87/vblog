@@ -19,6 +19,7 @@ from django.urls import include, path
 import writers.views as writers_views
 import posts.views as posts_views
 from vblog import settings
+# from posts.views import upload_images
 
 urlpatterns = [
     path('', writers_views.WritersList.as_view(), name='index'),
@@ -26,7 +27,8 @@ urlpatterns = [
     path('posts/', posts_views.index, name='posts'),
     path('posts/<int:pk>/', posts_views.PostDetail.as_view(), name='post_detail'),
 
-    path('posts/create_post/', posts_views.PostCreate.as_view(), name='create_post'),
+    path('posts/create_post/', posts_views.create_post, name='create_post'),
+   # path('upload_images/',upload_images, name = 'image_form' ),
 
     path('writer/create/', writers_views.WriterCreate.as_view(), name='create_writer'),
     # path('animal/<int:pk>/', animals_views.animal),

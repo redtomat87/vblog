@@ -1,6 +1,7 @@
 from django.db import models
 from datetime import datetime
 
+
 from writers.models import Writer
 
 # Create your models here.
@@ -35,7 +36,9 @@ class Post(models.Model):
 class Images(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='images')
     image_url = models.URLField()  # Поле для хранения ссылки на изображение
+    image = models.ImageField(upload_to='images/', null=True, max_length=255)
 
     def __str__(self):
         return f"Image for {self.post.title}"
-    
+    def __repr__(self):
+        return 'Resume(%s, %s)' % (self.post, self.file)    

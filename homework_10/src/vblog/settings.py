@@ -141,3 +141,5 @@ LOGIN_URL = '/auth/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_URL = '/auth/logout/'
 LOGOUT_REDIRECT_URL = 'myauth:home'
+MEDIA_URL = "/media/"
+MEDIA_ROOT = [BASE_DIR / "media"]
