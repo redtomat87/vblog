@@ -16,7 +16,7 @@ class Tags(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=100)
     body = models.TextField()
-    published_at = models.DateField(default=datetime.now)
+    published_at = models.DateTimeField(default=datetime.now)
 
     author = models.ForeignKey(
         Writer,
@@ -32,7 +32,7 @@ class Post(models.Model):
     class Meta:
         verbose_name = 'Post'
         verbose_name_plural = 'Posts'
-        
+
 class Images(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='images')
     image_url = models.URLField()  # Поле для хранения ссылки на изображение
