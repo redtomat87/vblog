@@ -17,3 +17,6 @@ class ImageForm(forms.ModelForm):
    class Meta:
       model = Images
       fields = ['image_url','image']
+      widgets = {
+            'post': forms.HiddenInput(),
+          }      

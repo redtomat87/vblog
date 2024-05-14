@@ -81,10 +81,11 @@ def create_post(request):
             post = post_form.save(commit=False)  
             post.author = request.user
             post.save() 
+            print(post.id)
             image = image_form.save(commit=False)
-    #        image.post = post
+            image.post = post
             image.save()
-            return redirect('posts/index.html')
+            return redirect('posts')
     else:
         post_form = PostForm()
         image_form = ImageForm()
