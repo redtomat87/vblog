@@ -1,6 +1,6 @@
 from django.db import models
 from datetime import datetime
-
+from django_prose_editor.fields import ProseEditorField
 
 from writers.models import Writer
 
@@ -15,7 +15,7 @@ class Tags(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=100)
-    body = models.TextField()
+    body = ProseEditorField()
     published_at = models.DateTimeField(default=datetime.now)
 
     author = models.ForeignKey(

@@ -370,6 +370,23 @@ django = ">=3.2.4"
 sqlparse = ">=0.2"
 
 [[package]]
+name = "django-prose-editor"
+version = "0.3.4"
+description = "Prose editor for the Django admin based on ProseMirror"
+optional = false
+python-versions = ">=3.10"
+files = [
+    {file = "django_prose_editor-0.3.4-py3-none-any.whl", hash = "sha256:f4cddab025222fe31f9e75e666586cd9fad5be0bf3af59dee14d3adc5c0aaf6b"},
+    {file = "django_prose_editor-0.3.4.tar.gz", hash = "sha256:bbe5b60b8872b01505c1abbd20295e6127b86d4cb1d9b04cdb65d53a5018e259"},
+]
+
+[package.dependencies]
+django = ">=4.2"
+
+[package.extras]
+tests = ["coverage", "nh3"]
+
+[[package]]
 name = "dulwich"
 version = "0.21.7"
 description = "Python Git Library"
@@ -1244,4 +1261,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "f4b41e275395333a175015cc94d0a58db0830993ea19b41c86d445d25c90e812"
+content-hash = "89fad20d601a876bcc965ce3703e0d066f8b05b49312274137e209466a8aee40"

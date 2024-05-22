@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     # 3-d party
     'debug_toolbar',
     # custom
+    'django_prose_editor',
     'myauth',
     'writers',
     'posts',

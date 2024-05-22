@@ -1,10 +1,11 @@
 from django import forms
 from .models import Post, Images
-
+from django_prose_editor.fields import ProseEditorFormField
 
 
 class PostForm(forms.ModelForm):
     tags_input = forms.CharField(max_length=100, label='Tags', required=False)
+    body = ProseEditorFormField()
 
     class Meta:
         model = Post
