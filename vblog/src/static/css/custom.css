@@ -1,0 +1,11 @@
+.prose-editor {
+    width: 100%;
+    min-height: 300px; /* Минимальная высота */
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.prose-editor .ProseMirror {
+    min-height: 300px; /* Минимальная высота для содержимого */
+}
